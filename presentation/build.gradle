@@ -59,15 +59,7 @@ android {
         noLines true
         showAll true
 
-        disable "TypographyFractions", "TypographyQuotes"
-        disable "InvalidPackage"            //Some libraries have issues with this.
-        disable "OldTargetApi"
-        //Lint gives this warning but SDK 20 would be Android L Beta.
-        disable "IconDensities"             //For testing purpose. This is safe to remove.
-        disable "IconMissingDensityFolder"  //For testing purpose. This is safe to remove.
-
         lintConfig file("${project.rootDir}/tools/rules-lint.xml")
-
         xmlOutput file("$project.buildDir/reports/lint-app.xml")
         htmlOutput file("$project.buildDir/reports/lint-app.html")
     }
@@ -106,24 +98,6 @@ android {
             buildConfigField 'String', 'URL_TEXT', '""'
         }
 
-        stage {
-            debuggable !config["isCiServer"]
-            shrinkResources false
-            minifyEnabled false
-            signingConfig signingConfigs.ci
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            if (!config["isCiServer"]) {
-                applicationIdSuffix ".stage"
-                versionNameSuffix "-rc.${date}"
-                manifestPlaceholders = [build_prefix: "Stage "]
-            } else {
-                manifestPlaceholders = [build_prefix: ""]
-            }
-
-            buildConfigField 'String', 'URL_TEXT', '""'
-        }
-
         develop {
             debuggable !config["isCiServer"]
             shrinkResources false
@@ -143,23 +117,6 @@ android {
             buildConfigField 'String', 'URL_TEXT', '""'
         }
 
-        review {
-            debuggable true
-            shrinkResources false
-            minifyEnabled false
-            signingConfig signingConfigs.ci
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            if (!config["isCiServer"]) {
-                testCoverageEnabled true
-                applicationIdSuffix '.review'
-                versionNameSuffix "-nb.${date}"
-            }
-
-            manifestPlaceholders = [build_prefix: "Review "]
-
-            buildConfigField 'String', 'URL_TEXT', '""'
-        }
 
     }
 
@@ -168,7 +125,7 @@ android {
     // configuracion de perfiles
 
     productFlavors {
-        multiperfil {
+        perfil1 {
             manifestPlaceholders = [app_name: "NombreProyecto1",
                                     appIcon : "@mipmap/ic_launcher"]
             resValue "string", "app_name", "NombreProyecto1"
@@ -178,7 +135,7 @@ android {
             dimension "perfil"
         }
 
-        lideres {
+        perfil2 {
             manifestPlaceholders = [app_name: "NombreProyecto2",
                                     appIcon : "@mipmap/ic_launcher"]
             resValue "string", "app_name", "NombreProyecto2"
@@ -196,10 +153,9 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.all {
             def project = config["appName"]
-            def perfil = variant.productFlavors[0].name
             def buildType = variant.variantData.variantConfiguration.buildType.name
             def version = variant.versionName
-            outputFileName = "${project}-${perfil}-${buildType}-${version}.apk"
+            outputFileName = "${project}-${buildType}-${version}.apk"
         }
     }
     allprojects {

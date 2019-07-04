@@ -11,9 +11,9 @@ import com.proyectobase.presentation.util.dismissKeyboard
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.android.ext.android.inject
 
-class LoginSoporteFragment: BaseDialogFragment(), MVPLoginSoporte.View {
+class LoginFragment: BaseDialogFragment(), MVPLogin.View {
 
-    private val presenter: LoginSoportePresenter by inject()
+    private val presenter: LoginPresenter by inject()
 
     override fun getLayout(): Int {
         return R.layout.fragment_login
@@ -67,9 +67,9 @@ class LoginSoporteFragment: BaseDialogFragment(), MVPLoginSoporte.View {
         const val ID_RECONOCIMIENTO = "ID_RECONOCIMIENTO"
 
         // ejemplo
-        fun newInstance(idReconocimiento: Long): LoginSoporteFragment {
+        fun newInstance(idReconocimiento: Long): LoginFragment {
             val bundle = Bundle()
-            val fragment = LoginSoporteFragment()
+            val fragment = LoginFragment()
             bundle.putLong(ID_RECONOCIMIENTO, idReconocimiento)
             fragment.arguments = bundle
             return fragment

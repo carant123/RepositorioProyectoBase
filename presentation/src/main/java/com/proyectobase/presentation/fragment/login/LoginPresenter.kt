@@ -7,13 +7,13 @@ import com.proyectobase.domain.interactor.impl.UsuarioUseCase
 import com.proyectobase.presentation.mapper.UsuarioModelDataMapper
 import com.proyectobase.presentation.presenter.Presenter
 
-class LoginSoportePresenter(
+class LoginPresenter(
             private val usuarioUseCase: UsuarioUseCase,
             private val usuarioModelDataMapper: UsuarioModelDataMapper) : Presenter{
 
-    private var view: MVPLoginSoporte.View ?= null
+    private var view: MVPLogin.View ?= null
 
-    fun create(view: MVPLoginSoporte.View) {
+    fun create(view: MVPLogin.View) {
         this.view = view
     }
 

@@ -6,11 +6,10 @@ import biz.belcorp.ffvv.presentation.notification.NotificationPublicityCerrable
 import biz.belcorp.ffvv.presentation.notification.NotificationPublicityFragment
 import com.proyectobase.presentation.R
 import com.proyectobase.presentation.base.BaseActivity
-import com.proyectobase.presentation.fragment.login.LoginSoporteFragment
+import com.proyectobase.presentation.fragment.login.LoginFragment
 import com.proyectobase.presentation.model.NotificacionModel
 import com.proyectobase.presentation.model.NotificacionReconocimientoModel
 import com.proyectobase.presentation.util.Constant
-import javax.inject.Inject
 
 class NotificationActivity : BaseActivity(), NotificationPublicityCerrable {
 
@@ -65,10 +64,10 @@ class NotificationActivity : BaseActivity(), NotificationPublicityCerrable {
     }
 
 
-    private fun instanciarFragmentReconocimiento(idReconocimiento: Long): LoginSoporteFragment {
+    private fun instanciarFragmentReconocimiento(idReconocimiento: Long): LoginFragment {
 
         // el fragmento puede ser otro
-        val fragment = LoginSoporteFragment.newInstance(idReconocimiento)
+        val fragment = LoginFragment.newInstance(idReconocimiento)
         return fragment
     }
 

@@ -3,7 +3,7 @@ package com.proyectobase.presentation.activities
 import android.os.Bundle
 import com.proyectobase.presentation.R
 import com.proyectobase.presentation.base.BaseActivity
-import com.proyectobase.presentation.fragment.login.LoginSoporteFragment
+import com.proyectobase.presentation.fragment.login.LoginFragment
 
 class MainActivity: BaseActivity() {
 
@@ -13,6 +13,6 @@ class MainActivity: BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addFragment(R.id.fragmentContainer, LoginSoporteFragment())
+        addFragment(R.id.fragmentContainer, LoginFragment())
     }
 }
