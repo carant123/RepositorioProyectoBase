@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_notification_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"/>
+
+    <RelativeLayout
+        android:layout_width="@dimen/view_notification_rl_width"
+        android:layout_height="@dimen/view_notification_rl_height"
+        android:layout_marginTop="@dimen/view_notification_rl_marginTop"
+        android:layout_marginRight="@dimen/view_notification_rl_marginRight"
+        android:id="@+id/rl_button_close"
+        android:clickable="true"
+        android:layout_alignParentRight="true">
+
+        <ImageView
+            android:id="@+id/img_notification_close"
+            android:layout_width="@dimen/view_notification_imv_width"
+            android:layout_height="@dimen/view_notification_imv_height"
+            android:minHeight="@dimen/view_notification_imv_minHeight"
+            android:layout_marginTop="@dimen/view_notification_imv_marginTop"
+            android:layout_marginRight="@dimen/view_notification_imv_marginRight"
+            android:layout_marginBottom="@dimen/view_notification_imv_marginBottom"
+            android:layout_marginLeft="@dimen/view_notification_imv_marginLeft"
+            android:padding="@dimen/view_notification_imv_padding"
+            android:background="@drawable/circulo_blanco"
+            app:srcCompat="@drawable/ic_button_close" />
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/vieLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/loading"
+        android:visibility="gone" />
+
+</RelativeLayout>

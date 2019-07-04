@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- View Push Notification -->
+    <dimen name="view_notification_rl_width">45dp</dimen>
+    <dimen name="view_notification_rl_height">45dp</dimen>
+    <dimen name="view_notification_rl_marginTop">9dp</dimen>
+    <dimen name="view_notification_rl_marginRight">8dp</dimen>
+    <dimen name="view_notification_imv_width">24dp</dimen>
+    <dimen name="view_notification_imv_height">24dp</dimen>
+    <dimen name="view_notification_imv_minHeight">24dp</dimen>
+    <dimen name="view_notification_imv_marginTop">9dp</dimen>
+    <dimen name="view_notification_imv_marginRight">8dp</dimen>
+    <dimen name="view_notification_imv_marginBottom">12dp</dimen>
+    <dimen name="view_notification_imv_marginLeft">13dp</dimen>
+    <dimen name="view_notification_imv_padding">5dp</dimen>
+
+    <dimen name="margin_between_filter_constancy_items">8dp</dimen>
+</resources>

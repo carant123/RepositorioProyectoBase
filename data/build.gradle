@@ -1,0 +1,153 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    def config = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion config["androidCompileSdkVersion"]
+    testBuildType config["testBuildType"]
+
+    defaultConfig {
+        minSdkVersion config["androidMinSdkVersion"]
+        versionCode config["androidVersionCode"]
+        versionName config["androidVersionName"]
+        multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'APP_NAME', '"AppFFVV"'
+        buildConfigField 'String', "API_ROUTE_GOOGLE", '"https://maps.googleapis.com/maps/api/directions/json?"'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        pickFirst 'protobuf.meta'
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'
+        disable 'OldTargetApi'
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField 'String', 'HOST', '"https://ffvvmobile.somosbelcorp.com/"'
+            buildConfigField 'String', 'API_SB', '"http://api.somosbelcorp.com/api/"'
+            buildConfigField 'String', 'GOOGLE_SECRET_KEY', '"1ZZ_z97owVV0DDfYzPpYEpe0T3I="'
+            buildConfigField 'String', 'GOOGLE_CLIENT_ID', '"gme-cetcosa"'
+            buildConfigField 'String', "PLACES_API_KEY", '"AIzaSyCidh75Q-9lnua8cxrCV8Akl6GLI4kueiA"'
+            buildConfigField 'String', 'URL_INDICADOR_HERR_DIGITALES', '"https://ffvv.somosbelcorp.com/IngresoExterno/IngresoWeb/?p="'
+            buildConfigField 'String', 'URL_WEB_PAGE', '"https://ffvv.somosbelcorp.com/IngresoExterno/IngresoApp/?p="'
+            buildConfigField 'String', 'URL_WEB_PAGE_SE', '"https://lideres.somosbelcorp.com/IngresoExterno/IngresoApp/?p="'
+        }
+
+        stage {
+            debuggable !config["isCiServer"]
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+
+            buildConfigField 'String', 'HOST', '"https://ffvvmobile.somosbelcorp.com/"'
+            buildConfigField 'String', 'API_SB', '"https://api.somosbelcorp.com/api/"'
+            buildConfigField 'String', 'GOOGLE_SECRET_KEY', '"1ZZ_z97owVV0DDfYzPpYEpe0T3I="'
+            buildConfigField 'String', 'GOOGLE_CLIENT_ID', '"gme-cetcosa"'
+            buildConfigField 'String', "PLACES_API_KEY", '"AIzaSyCidh75Q-9lnua8cxrCV8Akl6GLI4kueiA"'
+            buildConfigField 'String', 'URL_INDICADOR_HERR_DIGITALES', '"https://ffvv.somosbelcorp.com/IngresoExterno/IngresoWeb/?p="'
+            buildConfigField 'String', 'URL_WEB_PAGE', '"https://ffvv.somosbelcorp.com/IngresoExterno/IngresoApp/?p="'
+            buildConfigField 'String', 'URL_WEB_PAGE_SE', '"https://lideres.somosbelcorp.com/IngresoExterno/IngresoApp/?p="'
+        }
+
+        develop {
+            debuggable !config["isCiServer"]
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+
+            buildConfigField 'String', 'HOST', '"http://ffvvmobileqa.somosbelcorp.com/"'
+            buildConfigField 'String', 'API_SB', '"http://apimcqa.somosbelcorp.com/api/"'
+            buildConfigField 'String', 'GOOGLE_SECRET_KEY', '"1ZZ_z97owVV0DDfYzPpYEpe0T3I="'
+            buildConfigField 'String', 'GOOGLE_CLIENT_ID', '"gme-cetcosa"'
+            buildConfigField 'String', "PLACES_API_KEY", '"AIzaSyCidh75Q-9lnua8cxrCV8Akl6GLI4kueiA"'
+            buildConfigField 'String', 'URL_INDICADOR_HERR_DIGITALES', '"https://ffvvmqa.somosbelcorp.com/IngresoExterno/IngresoWeb/?p="'
+            buildConfigField 'String', 'URL_WEB_PAGE', '"https://ffvv.somosbelcorp.com/IngresoExterno/IngresoApp/?p="'
+            buildConfigField 'String', 'URL_WEB_PAGE_SE', '"https://lideres.somosbelcorp.com/IngresoExterno/IngresoApp/?p="'
+        }
+
+        review {
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+
+            buildConfigField 'String', 'HOST', '"http://ffvvmobileqa.somosbelcorp.com/"'
+            buildConfigField 'String', 'API_SB', '"https://apimcqa.somosbelcorp.com/api/"'
+            buildConfigField 'String', 'GOOGLE_SECRET_KEY', '"1ZZ_z97owVV0DDfYzPpYEpe0T3I="'
+            buildConfigField 'String', 'GOOGLE_CLIENT_ID', '"gme-cetcosa"'
+            buildConfigField 'String', "PLACES_API_KEY", '"AIzaSyCidh75Q-9lnua8cxrCV8Akl6GLI4kueiA"'
+            buildConfigField 'String', 'URL_INDICADOR_HERR_DIGITALES', '"https://ffvvmqa.somosbelcorp.com/IngresoExterno/IngresoWeb/?p="'
+            buildConfigField 'String', 'URL_WEB_PAGE', '"https://ffvv.somosbelcorp.com/IngresoExterno/IngresoApp/?p="'
+            buildConfigField 'String', 'URL_WEB_PAGE_SE', '"https://lideres.somosbelcorp.com/IngresoExterno/IngresoApp/?p="'
+        }
+    }
+
+    variantFilter { variant ->
+        if (variant.buildType.name == 'debug')
+            setIgnore(true)
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':domain')
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+    // dagger
+    implementation 'com.google.dagger:dagger:2.21'
+    kapt 'com.google.dagger:dagger-compiler:2.21'
+    // net
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'org.komamitsu:retrofit-converter-msgpack:1.1.0'
+    // reactivex
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // dbFlow
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:4.1.2"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:4.1.2"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:4.1.2@aar"
+    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:4.1.2"
+    // google
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
+    // amazon
+    implementation 'com.amazonaws:aws-android-sdk-kinesis:2.11.0'
+    // util
+    implementation 'io.jsonwebtoken:jjwt:0.9.0'
+    implementation "org.koin:koin-android:1.0.2"
+
+
+}

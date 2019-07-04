@@ -1,0 +1,37 @@
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+configurations {
+    compileOnly
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.compileOnly
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'org.koin:koin-core:1.0.2'
+    // dagger
+    compileOnly 'com.google.dagger:dagger-compiler:2.21'
+    implementation 'com.google.dagger:dagger:2.21'
+    // reactivex
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
+    // util
+    implementation 'org.apache.commons:commons-text:1.2'
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+    // test
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$jUnitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$jUnitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jUnitVersion"
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

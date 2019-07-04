@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="black">#000000</color>
+
+    <color name="transparent">#FFFFFFFF</color>
+    <color name="white_transparent_20">#33FFFFFF</color>
+    <color name="white_transparent_30">#4DFFFFFF</color>
+    <color name="white_transparent_70">#B3FFFFFF</color>
+    <color name="loading_transparent">#aa000022</color>
+    <color name="white">#FFFFFF</color>
+    <color name="azul_oscuro">#073569</color>
+    <color name="sections_drilldown_detail_background">#F8F8F9</color>
+
+    <color name="gray_label">#661d1d26</color>
+    <color name="separator_color">#e8e8e9</color>
+    <color name="gray_label_dark">#1d1d26</color>
+    <color name="shadow_start">#26000000</color>
+    <color name="shadow_end">#00000000</color>
+
+    <color name="purple">#722789</color>
+    <color name="gray_home">#768ea3</color>
+    <color name="purple_70">#8f66aa</color>
+    <color name="black_70">#a2aebe</color>
+    <color name="black_50">#7e7e7e</color>
+    <color name="black_20">#e4e8ed</color>
+    <color name="black_10">#f2f2f2</color>
+    <color name="baground_profile">#f6f8fa</color>
+
+    <color name="baground_space_venta_mn">#efefef</color>
+
+    <color name="celeste_verde">#009999</color>
+    <color name="subtitle_unete">#768ea3</color>
+    <color name="morado_unete">#72208a</color>
+    <color name="rojo_text_unete">#EB3B51</color>
+
+
+    <color name="fondo_notificacion_no_leida">#FFEFEFEF</color>
+
+    <color name="aquamarine">#35bdb2</color>
+    <color name="whatsapp_green">#66b763</color>
+    <color name="fb_blue">#30659b</color>
+
+    <color name="titles">#243039</color>
+    <color name="light_gray">#B9C0C5</color>
+    <color name="former_gray">#e4e8ed</color>
+    <color name="menu_gray">#b6babd</color>
+    <color name="titles_2">#242F39</color>
+    <color name="head_color_subtitle">#8a8a8e</color>
+
+    <color name="titles_new_bar">#768da5</color>
+
+    <color name="titulo_notificaciones_bar">#70278e</color>
+
+
+</resources>

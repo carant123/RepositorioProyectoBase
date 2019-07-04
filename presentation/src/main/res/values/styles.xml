@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+
+    <style name="AppNoTitleBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="LoginButtonStyle" parent="Base.Widget.AppCompat.Button.Borderless"></style>
+
+    <style name="TextLabelLoginSoporte" parent="Widget.Design.TextInputLayout">
+        <item name="android:textColorHint">@color/white_transparent_70</item>
+        <item name="colorAccent">@android:color/white</item>
+        <item name="colorControlNormal">@color/white_transparent_70</item>
+        <item name="colorControlActivated">@android:color/white</item>
+    </style>
+
+</resources>

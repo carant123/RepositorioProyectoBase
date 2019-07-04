@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.proyectobase.presentation">
+
+    <application
+            android:name=".MainApplication"
+            android:allowBackup="false"
+            android:configChanges="orientation|screenSize"
+            android:icon="${appIcon}"
+            android:label="${build_prefix}${app_name}"
+            android:largeHeap="true"
+            android:screenOrientation="portrait"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppNoTitleBarTheme">
+        <activity android:name="com.proyectobase.presentation.activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+
+        <!--
+      Optionally, register AnalyticsReceiver and AnalyticsService to support background
+      dispatching on non-Google Play devices
+        -->
+        <!--<receiver-->
+                <!--android:name="com.google.android.gms.analytics.AnalyticsReceiver"-->
+                <!--android:enabled="true">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <!--<service-->
+                <!--android:name="com.google.android.gms.analytics.AnalyticsService"-->
+                <!--android:enabled="true"-->
+                <!--android:exported="false" />-->
+
+        <!--
+                     Optionally, register CampaignTrackingReceiver and CampaignTrackingService to enable
+                     installation campaign reporting
+                -->
+        <!--<receiver-->
+                <!--android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"-->
+                <!--android:exported="true">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.android.vending.INSTALL_REFERRER" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <!--<service android:name="com.google.android.gms.analytics.CampaignTrackingService" />-->
+
+        <service
+                android:name=".services.BelcorpFirebaseMessagingService"
+                android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
+                android:name=".services.BelcorpIDListenerService"
+                android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="biz.belcorp.ffvv.FileProvider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths" />
+        </provider>
+
+        <!--<meta-data-->
+                <!--android:name="com.google.android.geo.API_KEY"-->
+                <!--android:value="${GEO_API_KEY}" />-->
+
+        <meta-data
+                android:name="firebase_crashlytics_collection_enabled"
+                android:value="false" />
+
+        <meta-data
+                android:name="firebase_performance_logcat_enabled"
+                android:value="true" />
+
+    </application>
+
+</manifest>
