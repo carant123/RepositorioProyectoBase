@@ -11,11 +11,9 @@ import com.proyectobase.presentation.util.LogUtil.LOGE
 
 abstract class BaseFragment : Fragment() {
 
-    //private var trace: Trace? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //initTrace()
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -24,15 +22,14 @@ abstract class BaseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //endTrace()
+
     }
 
     protected abstract val layout: Int
 
     private fun initTrace() {
         try {
-//            trace = FirebaseUtil.buildMonitoringTrace(this.javaClass.simpleName)
-//            trace?.start()
+
         } catch (exception: Exception) {
             LOGE(javaClass.simpleName, "initTrace", exception)
         }
@@ -40,7 +37,6 @@ abstract class BaseFragment : Fragment() {
 
     private fun endTrace() {
         try {
-            //trace?.stop()
         } catch (exception: Exception) {
             LOGE(javaClass.simpleName, "endTrace", exception)
         }

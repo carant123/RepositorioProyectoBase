@@ -3,7 +3,7 @@ package com.proyectobase.presentation.activities
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import biz.belcorp.ffvv.presentation.notification.NotificationPublicityCerrable
-import biz.belcorp.ffvv.presentation.notification.NotificationPublicityFragment
+import biz.belcorp.ffvv.presentation.notification.NotificationListaFragment
 import com.proyectobase.presentation.R
 import com.proyectobase.presentation.base.BaseActivity
 import com.proyectobase.presentation.fragment.login.LoginFragment
@@ -19,9 +19,9 @@ class NotificationActivity : BaseActivity(), NotificationPublicityCerrable {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        notificacion = intent.getSerializableExtra(Constant.NOTIFICACION) as NotificacionModel
+        notificacion = intent.getSerializableExtra(Constant.NOTIFICACION_DATOS) as NotificacionModel
         datos = intent.getStringExtra(Constant.NOTIFICACION_DATOS)
-        if (datos != null && datos!!.contains(Constant.TYPE_PUSH_GESTOR_CONTENIDO)) {
+        if (datos != null) {
             showFragmentPublicity()
         } else {
             showFragment()
@@ -60,7 +60,7 @@ class NotificationActivity : BaseActivity(), NotificationPublicityCerrable {
     }
 
     private fun getNotificationPublicityFragment(): Fragment {
-        return instanciarFragmentPublicity(datos!!)
+        return instanciarFragmentLista(datos!!)
     }
 
 
@@ -71,10 +71,10 @@ class NotificationActivity : BaseActivity(), NotificationPublicityCerrable {
         return fragment
     }
 
-    private fun instanciarFragmentPublicity(datos: String):
-            NotificationPublicityFragment {
+    private fun instanciarFragmentLista(datos: String):
+            NotificationListaFragment {
 
-        val fragment = NotificationPublicityFragment.newInstance(datos)
+        val fragment = NotificationListaFragment.newInstance(datos)
         fragment.establecerListenerCerrable(this)
         return fragment
 

@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_view_notification.*
 import javax.inject.Inject
 
 
-class NotificationPublicityFragment :
+class NotificationListaFragment :
         BaseDialogFragment(),
         NotificationPublicityView {
 
@@ -28,9 +28,9 @@ class NotificationPublicityFragment :
 
     companion object {
 
-        fun newInstance(datos: String): NotificationPublicityFragment {
+        fun newInstance(datos: String): NotificationListaFragment {
             val bundle = Bundle()
-            val fragment = NotificationPublicityFragment()
+            val fragment = NotificationListaFragment()
             bundle.putString(NOTIFICACION_DATOS, datos)
             fragment.arguments = bundle
             return fragment

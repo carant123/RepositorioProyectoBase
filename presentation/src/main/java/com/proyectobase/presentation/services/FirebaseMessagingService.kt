@@ -2,16 +2,13 @@ package com.proyectobase.presentation.services
 
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.proyectobase.domain.interactor.BaseSingleObserver
 import com.proyectobase.presentation.alarms.NotificationHelper
 import com.proyectobase.presentation.model.NotificacionModel
-import com.proyectobase.presentation.util.Constant
-import com.proyectobase.presentation.util.Constant.TYPE_PUSH_GESTOR_CONTENIDO
-import dagger.Lazy
+import com.proyectobase.presentation.util.Constant.TYPE_PUSH
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
-class BelcorpFirebaseMessagingService : FirebaseMessagingService() {
+class FirebaseMessagingService : FirebaseMessagingService() {
 
     @Inject
     lateinit var notificationHelper: NotificationHelper
@@ -50,7 +47,7 @@ class BelcorpFirebaseMessagingService : FirebaseMessagingService() {
                                  titulo: String,
                                  mensaje: String, valoresModulo: List<String>) {
 
-        if (modulo.contains(TYPE_PUSH_GESTOR_CONTENIDO)) {
+        if (modulo.contains(TYPE_PUSH)) {
             procesarMensajePublicity(modulo, titulo, mensaje)
 
         }

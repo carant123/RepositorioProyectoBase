@@ -21,40 +21,8 @@
             </intent-filter>
         </activity>
 
-
-        <!--
-      Optionally, register AnalyticsReceiver and AnalyticsService to support background
-      dispatching on non-Google Play devices
-        -->
-        <!--<receiver-->
-                <!--android:name="com.google.android.gms.analytics.AnalyticsReceiver"-->
-                <!--android:enabled="true">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
-
-        <!--<service-->
-                <!--android:name="com.google.android.gms.analytics.AnalyticsService"-->
-                <!--android:enabled="true"-->
-                <!--android:exported="false" />-->
-
-        <!--
-                     Optionally, register CampaignTrackingReceiver and CampaignTrackingService to enable
-                     installation campaign reporting
-                -->
-        <!--<receiver-->
-                <!--android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"-->
-                <!--android:exported="true">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.android.vending.INSTALL_REFERRER" />-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
-
-        <!--<service android:name="com.google.android.gms.analytics.CampaignTrackingService" />-->
-
         <service
-                android:name=".services.BelcorpFirebaseMessagingService"
+                android:name=".services.FirebaseMessagingService"
                 android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -62,7 +30,7 @@
         </service>
 
         <service
-                android:name=".services.BelcorpIDListenerService"
+                android:name=".services.IDListenerService"
                 android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -71,7 +39,7 @@
 
         <provider
                 android:name="android.support.v4.content.FileProvider"
-                android:authorities="biz.belcorp.ffvv.FileProvider"
+                android:authorities="FileProvider"
                 android:exported="false"
                 android:grantUriPermissions="true">
             <meta-data

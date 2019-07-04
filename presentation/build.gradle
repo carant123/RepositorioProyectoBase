@@ -72,12 +72,6 @@ android {
         if (rootProject.file("env.properties").exists())
             env.load(new FileInputStream(rootProject.file("env.properties")))
 
-        ci {
-            storeFile rootProject.file(env["store.file"])
-            storePassword env["key.store.password"]
-            keyAlias env["key.store.alias"]
-            keyPassword env["key.password"]
-        }
     }
 
     // configuracion de ambientes
@@ -87,7 +81,6 @@ android {
 
         release {
             manifestPlaceholders = [entorno_prefix: "", build_prefix: ""]
-            signingConfig signingConfigs.ci
             debuggable false
             shrinkResources false
             minifyEnabled false
@@ -102,7 +95,6 @@ android {
             debuggable !config["isCiServer"]
             shrinkResources false
             minifyEnabled false
-            signingConfig signingConfigs.ci
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             if (!config["isCiServer"]) {
